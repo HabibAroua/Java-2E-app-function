@@ -45,7 +45,8 @@ public class AddPassanger extends HttpServlet
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		System.out.println("Hello world");
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
 	}
 }

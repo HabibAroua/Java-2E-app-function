@@ -12,7 +12,7 @@
                   <div class="title">Add a passanger</div>
                   <fieldset>
                          <legend>Passenger detail</legend>
-                         <form action="AddPassenger" method="post">
+                         <form action="Form" method="post">
                              <div class="inputField">
                                   <label for="first_name" class="inputLabel">First name :</label>
                                   <input type="text" name="first_name" id="first_name"></input>
@@ -28,15 +28,16 @@
                              <div class="inputField">
                                   <label for="gender" class="inputLabel">Gender :</label>
                                   <select name="gender" id="gender">
-                                          <option>Man</option>
-                                          <option>Woman</option>
+                                          <option>Male</option>
+                                          <option>Female</option>
                                   </select>
+                             </div>
+                             <div class="inputField">
+                                  <input type="submit" id="submitBtn" value="Add new passanger" ></input>
                              </div>
                          </form>
                   </fieldset>
-                  <div class="inputField">
-                        <input type="submit" id="submitBtn" value="Add new passanger" ></input>
-                  </div>
+                  
              </div>
       </body>
 </html>

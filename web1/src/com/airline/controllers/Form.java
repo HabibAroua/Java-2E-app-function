@@ -1,9 +1,10 @@
 package com.airline.controllers;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,6 +45,7 @@ public class Form extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		// TODO Auto-generated method stub
+		request.setAttribute("error", false);
 		String firstName=request.getParameter("first_name");
 		String lastName=request.getParameter("last_name");
 		String dateBirth=request.getParameter("date_birth");
@@ -61,17 +63,29 @@ public class Form extends HttpServlet
 		try
 		{
 			String dobArray[]=dateBirth.split("\\/");
-		
-		    String month=dobArray[0];
-		    String day=dobArray[1];
-		    String year=dobArray[2];
-		
-		    Calendar cal =Calendar.getInstance();
-	        //Type date	
-		    cal.set(Calendar.YEAR , Integer.parseInt(year));
-		    cal.set(Calendar.MONTH , Integer.parseInt(month));
-		    cal.set(Calendar.DAY_OF_MONTH,Integer.parseInt(day));
-		    Date dob=cal.getTime();
+		    String pattern="^\\d{1,2}\\/\\d{1,2}\\/\\d{4}$";
+		    Pattern r=Pattern.compile(pattern);
+		    
+		    Matcher m=r.matcher(dateBirth);
+		    
+		    if(m.find())
+		    {
+		    	String month=dobArray[0];
+		        String day=dobArray[1];
+		        String year=dobArray[2];
+		        Calendar cal =Calendar.getInstance();
+	            //Type date	
+		        cal.set(Calendar.YEAR , Integer.parseInt(year));
+		        cal.set(Calendar.MONTH , Integer.parseInt(month));
+		        cal.set(Calendar.DAY_OF_MONTH,Integer.parseInt(day));
+		        Date dob=cal.getTime();
+		    }
+		    else
+		    {
+		    	System.out.println("Invalide date of birth");
+		    	request.setAttribute("error", true);
+		    	request.setAttribute("Date format error", true);
+		    }
 		}
 		catch(ArrayIndexOutOfBoundsException e)
 		{
@@ -79,7 +93,5 @@ public class Form extends HttpServlet
 			response.setContentType("text/html");
 			out.println("<script>alert('You don/t enter the birth date !!'); </script>");
 		}
-		
-		
 	}
 }

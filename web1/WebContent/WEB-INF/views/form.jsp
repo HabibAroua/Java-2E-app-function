@@ -9,6 +9,42 @@
       </head>
       <body>
             <div class="container">
+            <% 
+            if (request.getAttribute("error_all")!=null)
+            	{
+            	%>
+            	<p style="color:red">All values are empty</p>
+            	<%
+            	}
+            	%>
+            	<%
+            	if(request.getAttribute("error_lastName")!=null)
+            	{
+            	%>
+            	<p style="color:red">Your last name is empty</p>
+            	<%} %>
+            	<%
+            	if(request.getAttribute("error_datebirth")!=null)
+            	{
+            	%>
+            	<p style="color:red">Your date of birth is empty</p>
+            	<%} %>
+            	<%
+            	if(request.getAttribute("error_firstName")!=null)
+            	{
+            	%>
+            	<p style="color:red">Your first name is empty</p>
+            	<%
+            	}
+            	%>
+            	<% if(request.getAttribute("validate")!= null)
+            		
+            		{
+                %>
+            	<p style="color:green">You are enrolled to my web site</p>
+            	<%
+            		} 
+            	%>
                   <div class="title">Add a passanger</div>
                   <fieldset>
                          <legend>Passenger detail</legend>

@@ -55,10 +55,44 @@ public class Form extends HttpServlet
 		System.out.println("Date of birth "+dateBirth);
 		System.out.println("Gender is "+gender);
 		
-		if (firstName.length()==0)
+		if((dateBirth.length()==0)&&(firstName.length()==0)&&(lastName.length()==0))
 		{
-			System.out.println("Empty first name error");
+			System.out.println("all value are empty");
 			request.setAttribute("error", true);
+			request.setAttribute("error_all", true);	
+		}
+		else
+		{
+			if(lastName.length()==0)
+			{
+				System.out.println("Empty last name error");
+				request.setAttribute("error", true);
+				request.setAttribute("error_lastName", true);
+			}
+			else
+			{
+				if(dateBirth.length()==0)
+				{
+					System.out.println("Empty date of birth");
+					request.setAttribute("error", true);
+					request.setAttribute("error_datebirth", true);
+				}
+				else
+				{
+					if (firstName.length()==0)
+					{
+						System.out.println("Empty first name error");
+						request.setAttribute("error", true);
+						request.setAttribute("error_firstName", true);
+					}
+					else
+					{
+						System.out.println("You are enrolled to my web site");
+						request.setAttribute("error", true);
+						request.setAttribute("validate", true);
+					}
+				}
+			}
 		}
 		try
 		{
@@ -85,6 +119,12 @@ public class Form extends HttpServlet
 		    	System.out.println("Invalide date of birth");
 		    	request.setAttribute("error", true);
 		    	request.setAttribute("Date format error", true);
+		    }
+		    
+		    if((Boolean)request.getAttribute("error"))
+		    {
+		    	RequestDispatcher view=request.getRequestDispatcher("WEB-INF/views/form.jsp");
+		    	view.forward(request, response);
 		    }
 		}
 		catch(ArrayIndexOutOfBoundsException e)

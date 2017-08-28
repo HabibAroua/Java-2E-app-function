@@ -6,6 +6,7 @@
            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
            <title>Form</title>
            <link rel="stylesheet" href="resources/css/theme.css">
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
       </head>
       <body>
             <div class="container">
@@ -13,7 +14,9 @@
             if (request.getAttribute("error_all")!=null)
             	{
             	%>
-            	<p style="color:red">All values are empty</p>
+            	<div class="alert alert-warning">
+            	      All values are empty
+            	</div>
             	<%
             	}
             	%>
@@ -21,27 +24,36 @@
             	if(request.getAttribute("error_lastName")!=null)
             	{
             	%>
-            	<p style="color:red">Your last name is empty</p>
+            	<div class="alert alert-warning">
+            	       Your last name is empty
+            	</div>
             	<%} %>
             	<%
             	if(request.getAttribute("error_datebirth")!=null)
             	{
             	%>
-            	<p style="color:red">Your date of birth is empty</p>
+            	<div class="alert alert-warning">
+            	    Your date of birth is empty
+            	</div>
             	<%} %>
             	<%
             	if(request.getAttribute("error_firstName")!=null)
             	{
             	%>
-            	<p style="color:red">Your first name is empty</p>
+            	<div class="alert alert-warning">
+            	     Your first name is empty
+            	</div>
             	<%
             	}
             	%>
-            	<% if(request.getAttribute("validate")!= null)
+            	<% 
+            	if(request.getAttribute("validate")!= null)
             		
             		{
                 %>
-            	<p style="color:green">You are enrolled to my web site</p>
+                <div class="alert alert-success">
+                    You are enrolled to my web site
+                </div>
             	<%
             		} 
             	%>

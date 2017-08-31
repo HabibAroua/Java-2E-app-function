@@ -7,8 +7,8 @@
           <title>JSP application</title>
      </head>
      <body>
-          <h1>Hello to the first page</h1>
+          <h1>Hello passenger !!</h1>
           </br>
-          <p>This my first jsp application !!</p>
+          <p>This passenger has been added </p>
      </body>
 </html>

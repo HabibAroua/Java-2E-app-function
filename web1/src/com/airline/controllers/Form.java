@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -118,8 +119,11 @@ public class Form extends HttpServlet
 						        cal.set(Calendar.DAY_OF_MONTH,Integer.parseInt(day));
 						        Date dob=cal.getTime();
 						        passenger.setDob(dob);
-						        ArrayList<Passenger> list=new ArrayList<Passenger>();
+						        //********************************************
+						        ServletContext sc=this.getServletContext();
+						        ArrayList<Passenger> list=(ArrayList<Passenger>)sc.getAttribute("passangers");
 						        list.add(passenger);
+						        sc.setAttribute("passangers", list);
 						        System.out.println("This is the list of passneger ");
 						        System.out.println(list.get(0));
 						        response.sendRedirect("http://localhost:8080/web1/page1");

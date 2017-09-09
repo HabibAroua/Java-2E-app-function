@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import com.airline.models.Passenger;
+
+import network.IpAdresse;
+
 import com.airline.models.Gender;;
 /**
  * Servlet implementation class Form
@@ -126,7 +129,7 @@ public class Form extends HttpServlet
 						        sc.setAttribute("passangers", list);
 						        System.out.println("This is the list of passneger ");
 						        System.out.println(list.get(0));
-						        response.sendRedirect("http://localhost:8080/web1/page1");
+						        //response.sendRedirect("");
 						    }
 						    else
 						    {
@@ -153,5 +156,8 @@ public class Form extends HttpServlet
 			response.setContentType("text/html");
 			out.println("<script>alert('You don/t enter the birth date !!'); </script>");
 		}
+		
+		IpAdresse ip=new IpAdresse();
+		System.out.println("The adresse is "+ip.getIpAdresse());
 	}
 }

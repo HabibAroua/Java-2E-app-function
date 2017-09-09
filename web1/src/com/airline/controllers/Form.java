@@ -14,10 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
 import com.airline.models.Passenger;
-
-import network.IpAdresse;
 
 import com.airline.models.Gender;;
 /**
@@ -122,13 +119,16 @@ public class Form extends HttpServlet
 						        cal.set(Calendar.DAY_OF_MONTH,Integer.parseInt(day));
 						        Date dob=cal.getTime();
 						        passenger.setDob(dob);
-						        //********************************************
+						        //*****************************************
 						        ServletContext sc=this.getServletContext();
-						        ArrayList<Passenger> list=(ArrayList<Passenger>)sc.getAttribute("passangers");
-						        list.add(passenger);
-						        sc.setAttribute("passangers", list);
-						        System.out.println("This is the list of passneger ");
-						        System.out.println(list.get(0));
+						        synchronized (this)
+						        {
+						        	ArrayList<Passenger> list=(ArrayList<Passenger>)sc.getAttribute("passangers");
+						            list.add(passenger);
+						            sc.setAttribute("passangers", list);
+						            System.out.println("This is the list of passneger ");
+						            System.out.println(list.get(0));
+						        }
 						        //response.sendRedirect("");
 						    }
 						    else
@@ -148,7 +148,6 @@ public class Form extends HttpServlet
 				    }
 			    }
 		    }
-		    
 		}
 		catch(ArrayIndexOutOfBoundsException e)
 		{
@@ -156,8 +155,5 @@ public class Form extends HttpServlet
 			response.setContentType("text/html");
 			out.println("<script>alert('You don/t enter the birth date !!'); </script>");
 		}
-		
-		IpAdresse ip=new IpAdresse();
-		System.out.println("The adresse is "+ip.getIpAdresse());
 	}
 }

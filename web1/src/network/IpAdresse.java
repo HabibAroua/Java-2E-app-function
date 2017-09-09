@@ -5,7 +5,7 @@ import java.net.UnknownHostException;
 
 public class IpAdresse 
 {
-	public String ipAdresse;
+	private String ipAdresse;
 	
 	public IpAdresse()
 	{
@@ -15,8 +15,10 @@ public class IpAdresse
             System.out.println(ipAddr.getHostAddress());
             ipAdresse=ipAddr.getHostAddress();
         } 
-		catch (UnknownHostException ex) {
+		catch (UnknownHostException ex) 
+		{
             ex.printStackTrace();
+            ipAdresse="localhost";
         }	
 	}
 	
@@ -24,5 +26,4 @@ public class IpAdresse
 	{
 		return this.ipAdresse;
 	}
-
 }

@@ -1,5 +1,4 @@
 package com.airline.controllers;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.airline.models.Passenger;
-
 import com.airline.models.Gender;;
 /**
  * Servlet implementation class Form
@@ -102,7 +100,7 @@ public class Form extends HttpServlet
 						    passenger.setFirstName(firstName);
 						    passenger.setLastName(lastName);
 						    passenger.setGender(Gender.valueOf(gender));
-						    //
+						    //**********************************************************
 						    String dobArray[]=dateBirth.split("\\/");
 						    String pattern="^\\d{1,2}\\/\\d{1,2}\\/\\d{4}$";
 						    Pattern r=Pattern.compile(pattern);
@@ -129,7 +127,7 @@ public class Form extends HttpServlet
 						            System.out.println("This is the list of passneger ");
 						            System.out.println(list.get(0));
 						        }
-						        //response.sendRedirect("");
+						        response.sendRedirect("http://localhost:8080/web1/");
 						    }
 						    else
 						    {

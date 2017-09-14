@@ -3,7 +3,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.RequestDispatcher;
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.airline.models.Passenger;
+
+import db.PassengerDAOImp;
+
 import com.airline.models.Gender;;
 /**
  * Servlet implementation class Form
@@ -56,6 +60,7 @@ public class Form extends HttpServlet
 		    String lastName=request.getParameter("last_name");
 		    String dateBirth=request.getParameter("date_birth");
 		    String gender=request.getParameter("gender");
+		    
 		    System.out.println("The first name is :"+firstName);
 		    System.out.println("The last name is "+lastName);
 		    System.out.println("Date of birth "+dateBirth);
@@ -100,6 +105,7 @@ public class Form extends HttpServlet
 						    passenger.setFirstName(firstName);
 						    passenger.setLastName(lastName);
 						    passenger.setGender(Gender.valueOf(gender));
+						    
 						    //**********************************************************
 						    String dobArray[]=dateBirth.split("\\/");
 						    String pattern="^\\d{1,2}\\/\\d{1,2}\\/\\d{4}$";
@@ -115,8 +121,21 @@ public class Form extends HttpServlet
 						        cal.set(Calendar.YEAR , Integer.parseInt(year));
 						        cal.set(Calendar.MONTH , Integer.parseInt(month));
 						        cal.set(Calendar.DAY_OF_MONTH,Integer.parseInt(day));
-						        Date dob=cal.getTime();
+						        java.util.Date dob=(java.util.Date)cal.getTime();
 						        passenger.setDob(dob);
+						        java.sql.Date sqlStartDate = new Date(dob.getTime()); 
+						        
+						        Passenger p=new Passenger(firstName,lastName,sqlStartDate,Gender.valueOf(gender));
+						        PassengerDAOImp pDAO=new PassengerDAOImp();
+						        int res=pDAO.addPassenger(p);
+						        if(res==1)
+						        {
+							    	System.out.println("You are enrolled to my web site");
+						        }
+						        else
+						        {
+						        	System.out.println("Error");
+						        }
 						        //*****************************************
 						        ServletContext sc=this.getServletContext();
 						        synchronized (this)

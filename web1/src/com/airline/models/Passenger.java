@@ -46,9 +46,9 @@ public class Passenger
 		return dob;
 	}
 	
-	public void setDob(Date dob)
+	public void setDob(java.util.Date dob2)
 	{
-		this.dob = dob;
+		this.dob = dob2;
 	}
 	
 	public Gender getGender() 

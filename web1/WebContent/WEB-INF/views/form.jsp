@@ -9,54 +9,28 @@
            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
       </head>
       <body>
+           <script src="resources/javascript/jquery.js"></script>
+           <script src="resources/javascript/init.js"></script>
+  
             <div class="container">
-            <% 
-            if (request.getAttribute("error_all")!=null)
-            	{
-            	%>
-            	<div class="alert alert-warning">
+           
+            	<div class="alert alert-warning" id="all"> 
+            	
             	      All values are empty
-            	</div>
-            	<%
-            	}
-            	%>
-            	<%
-            	if(request.getAttribute("error_lastName")!=null)
-            	{
-            	%>
-            	<div class="alert alert-warning">
-            	       Your last name is empty
-            	</div>
-            	<%} %>
-            	<%
-            	if(request.getAttribute("error_datebirth")!=null)
-            	{
-            	%>
-            	<div class="alert alert-warning">
+                </div> 
+            
+            	<div class="alert alert-warning" id="birth">
             	    Your date of birth is empty
             	</div>
-            	<%} %>
-            	<%
-            	if(request.getAttribute("error_firstName")!=null)
-            	{
-            	%>
-            	<div class="alert alert-warning">
+
+            	<div class="alert alert-warning" id="name">
             	     Your first name is empty
             	</div>
-            	<%
-            	}
-            	%>
-            	<% 
-            	if(request.getAttribute("validate")!= null)
-            		
-            		{
-                %>
-                <div class="alert alert-success">
+
+                <div class="alert alert-success" id="succes">
                     You are enrolled to my web site
                 </div>
-            	<%
-            		} 
-            	%>
+
                   <div class="title">Add a passanger</div>
                   <fieldset>
                          <legend>Passenger detail</legend>

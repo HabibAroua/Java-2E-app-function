@@ -27,7 +27,7 @@ import com.airline.models.Gender;;
 public class Form extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
-       
+      public static boolean testAll;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -70,15 +70,17 @@ public class Form extends HttpServlet
 		    if((dateBirth.length()==0)&&(firstName.length()==0)&&(lastName.length()==0))
 		    {
 		    	System.out.println("all value are empty");
-			    request.setAttribute("error", true);
-			    request.setAttribute("error_all", true);	
+			    //request.setAttribute("error", true);
+			    request.setAttribute("error_all", false);
+			    request.getParameterValues(lastName);
+			    testAll=false;
 		    }
 		    else
 		    {
 		    	if(lastName.length()==0)
 			    {
 		    		System.out.println("Empty last name error");
-				    request.setAttribute("error", true);
+				    //request.setAttribute("error", true);
 				    request.setAttribute("error_lastName", true);
 			    }
 			    else
@@ -86,7 +88,7 @@ public class Form extends HttpServlet
 			    	if(dateBirth.length()==0)
 				    {
 			    		System.out.println("Empty date of birth");
-					    request.setAttribute("error", true);
+					  //  request.setAttribute("error", true);
 					    request.setAttribute("error_datebirth", true);
 				    }
 				    else
@@ -94,13 +96,13 @@ public class Form extends HttpServlet
 				    	if (firstName.length()==0)
 					    {
 				    		System.out.println("Empty first name error");
-						    request.setAttribute("error", true);
+						//    request.setAttribute("error", true);
 						    request.setAttribute("error_firstName", true);
 					    }
 					    else
 					    {
 					    	System.out.println("You are enrolled to my web site");
-						    request.setAttribute("error", true);
+						  //  request.setAttribute("error", true);
 						    request.setAttribute("validate", true);
 						    passenger.setFirstName(firstName);
 						    passenger.setLastName(lastName);
@@ -131,6 +133,7 @@ public class Form extends HttpServlet
 						        if(res==1)
 						        {
 							    	System.out.println("You are enrolled to my web site");
+							        response.sendRedirect("http://localhost:8080/web1/");
 						        }
 						        else
 						        {
@@ -146,7 +149,7 @@ public class Form extends HttpServlet
 						            System.out.println("This is the list of passneger ");
 						            System.out.println(list.get(0));
 						        }
-						        response.sendRedirect("http://localhost:8080/web1/");
+						        //response.sendRedirect("http://localhost:8080/web1/");
 						    }
 						    else
 						    {

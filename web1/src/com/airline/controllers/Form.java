@@ -18,7 +18,8 @@ import com.airline.models.Passenger;
 
 import db.PassengerDAOImp;
 
-import com.airline.models.Gender;;
+import com.airline.models.Gender;
+import com.airline.models.Passenger;
 /**
  * Servlet implementation class Form
  */

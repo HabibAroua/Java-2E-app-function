@@ -1,6 +1,8 @@
 package db;
 
 import java.util.List;
+
+import com.airline.models.Gender;
 import com.airline.models.Passenger;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -38,7 +40,7 @@ public class PassengerDAOImp implements PassengerDAO
 			pr.setString(1, p.getFirstName());
 			pr.setString(2,p.getLastName());
 			pr.setDate(3,(java.sql.Date) p.getDob());
-			pr.setObject(4, p.getGender());
+			pr.setObject(4,(Gender) p.getGender());
 			pr.executeUpdate();
 			return 1;
 		}
@@ -75,6 +77,11 @@ public class PassengerDAOImp implements PassengerDAO
 	{
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public String toAffiche()
+	{
+		return "Hello world";
 	}
 
 }

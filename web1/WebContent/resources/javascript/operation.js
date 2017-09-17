@@ -11,8 +11,7 @@ $(document).ready
         			    var dateBirth=document.getElementById("my_date").value;
         				if((firstName=="")&&(lastName=="")&&(dateBirth==""))
         				{
-        					alert(firstName+" "+lastName+" "+dateBirth);
-            			    var url = $(this).prop('href');
+        					var url = $(this).prop('href');
             			    $("#submitBtn").load(url);
             			    event.preventDefault();
         				    $("#all").show();
@@ -25,8 +24,25 @@ $(document).ready
      			                event.preventDefault();
  							    $("#name").show();
 							}
-        			    }
-        							   		 
+        					else
+        					{
+        						if(lastName=="")
+        						{
+        							$("#submitBtn").load(url);
+         			                event.preventDefault();
+         			               $("#last").show();
+        						}
+        						else
+        						{
+        							if(dateBirth=="")
+        							{
+        								$("#submitBtn").load(url);
+             			                event.preventDefault();
+             			               $("#birth").show();
+        							}
+        						}
+        					}
+        			    }  		 
         		    }
         	);
         }

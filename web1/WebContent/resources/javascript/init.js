@@ -5,5 +5,6 @@ $(
    			$("#birth").hide();
    			$("#name").hide();
    			$("#succes").hide();
+   			$("#last").hide();
    		}
 );

@@ -11,7 +11,8 @@
       <body>
            <script src="resources/javascript/jquery.js"></script>
            <script src="resources/javascript/init.js"></script>
-  
+           <script src="resources/javascript/operation.js"></script>
+
             <div class="container">
            
             	<div class="alert alert-warning" id="all"> 
@@ -26,6 +27,10 @@
             	<div class="alert alert-warning" id="name">
             	     Your first name is empty
             	</div>
+            	
+            	<div class="alert alert-warning" id="last">
+            	     Your last name is empty
+            	</div>
 
                 <div class="alert alert-success" id="succes">
                     You are enrolled to my web site
@@ -34,7 +39,7 @@
                   <div class="title">Add a passanger</div>
                   <fieldset>
                          <legend>Passenger detail</legend>
-                         <form action="Form" method="post">
+                         <form  method="post">
                              <div class="inputField">
                                   <label for="first_name" class="inputLabel">First name :</label>
                                   <input type="text" name="first_name" id="first_name"></input>
@@ -45,7 +50,7 @@
                              </div>
                              <div class="inputField">
                                   <label for="date_birth" class="inputLabel">Birth date :</label>
-                                  <input type="text" name="date_birth" id="date_brith"></input>
+                                  <input type="text" name="date_birth" id="my_date"></input>
                              </div>
                              <div class="inputField">
                                   <label for="gender" class="inputLabel">Gender :</label>
@@ -55,7 +60,7 @@
                                   </select>
                              </div>
                              <div class="inputField">
-                                  <input type="submit" id="submitBtn" value="Add new passanger" ></input>
+                                  <input type="submit" id="submitBtn" value="Add new passanger"  ></input>
                              </div>
                          </form>
                   </fieldset>

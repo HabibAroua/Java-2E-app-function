@@ -9,6 +9,7 @@ $(document).ready
             			var firstName=document.getElementById("first_name").value;
         			    var lastName=document.getElementById("last_name").value;
         			    var dateBirth=document.getElementById("my_date").value;
+        			    var cin=document.getElementById("cin").value;
         				if((firstName=="")&&(lastName=="")&&(dateBirth==""))
         				{
         					var url = $(this).prop('href');
@@ -38,7 +39,16 @@ $(document).ready
         							{
         								$("#submitBtn").load(url);
              			                event.preventDefault();
-             			               $("#birth").show();
+             			                $("#birth").show();
+        							}
+        							else
+        							{
+        								if(cin=="")
+        								{
+        									$("#submitBtn").load(url);
+                 			                event.preventDefault();
+                 			                $("#cin").show();
+        								}
         							}
         						}
         					}

@@ -61,7 +61,7 @@ public class Form extends HttpServlet
 		    String lastName=request.getParameter("last_name");
 		    String dateBirth=request.getParameter("date_birth");
 		    String gender=request.getParameter("gender");
-		    
+		    String cin=request.getParameter("cin");
 		    System.out.println("The first name is :"+firstName);
 		    System.out.println("The last name is "+lastName);
 		    System.out.println("Date of birth "+dateBirth);
@@ -107,7 +107,7 @@ public class Form extends HttpServlet
 						    request.setAttribute("validate", true);
 						    passenger.setFirstName(firstName);
 						    passenger.setLastName(lastName);
-						    passenger.setGender(Gender.valueOf(gender));
+						    passenger.setGender(gender);
 						    
 						    //**********************************************************
 						    String dobArray[]=dateBirth.split("\\/");
@@ -128,7 +128,7 @@ public class Form extends HttpServlet
 						        passenger.setDob(dob);
 						        java.sql.Date sqlStartDate = new Date(dob.getTime()); 
 						        
-						        Passenger p=new Passenger(firstName,lastName,sqlStartDate,Gender.valueOf(gender));
+						        Passenger p=new Passenger(cin,firstName,lastName,sqlStartDate,gender);
 						        PassengerDAOImp pDAO=new PassengerDAOImp();
 						        int res=pDAO.addPassenger(p);
 						        if(res==1)

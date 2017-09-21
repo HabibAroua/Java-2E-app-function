@@ -36,11 +36,19 @@
                 <div class="alert alert-success" id="succes">
                     You are enrolled to my web site
                 </div>
+                
+                <div class="alert alert-warning" id="cin">
+                    Your cin is empty
+                </div>
 
                   <div class="title">Add a passanger</div>
                   <fieldset>
                          <legend>Passenger detail</legend>
                          <form  method="post">
+                             <div class="inputField">
+                                  <label for="first_name" class="inputLabel">Cin :</label>
+                                  <input type="text" name="cin" id="my_cin"></input>
+                             </div>
                              <div class="inputField">
                                   <label for="first_name" class="inputLabel">First name :</label>
                                   <input type="text" name="first_name" id="first_name"></input>

@@ -27,7 +27,30 @@ public class PassengerDAOImp implements PassengerDAO
 	public List<Passenger> getAllPassenger() 
 	{
 		// TODO Auto-generated method stub
-		return null;
+		try 
+		{
+			String req = "SELECT * FROM Passenger";
+			PreparedStatement p=connection.getConnection().prepareStatement(req);
+			ResultSet res =p.executeQuery();
+			List<Passenger>list=new ArrayList<Passenger>();
+			while (res.next())
+			{
+				String cin = res.getString("cin");
+				String firstName = res.getString("firstName");
+				String lastName=res.getString("lastName");
+				Date datedob=res.getDate("dob");
+				String gender=res.getString("gender");
+				Passenger passenger=new Passenger(cin,firstName,lastName,datedob,gender);
+				list.add(passenger);
+
+			}
+			return list;
+		}
+		catch (Exception ex)
+		{
+			System.out.println(ex.getMessage());
+			return null;
+		}
 	}
 
 	@Override
@@ -35,12 +58,13 @@ public class PassengerDAOImp implements PassengerDAO
 	{
 		try
 		{
-			String req="INSERT INTO passenger(firstName,lastName,dob,gender) VALUES (?,?,?,?)";
+			String req="INSERT INTO passenger(cin,firstName,lastName,dob,gender) VALUES (?,?,?,?,?)";
 			PreparedStatement pr=connection.getConnection().prepareStatement(req);
-			pr.setString(1, p.getFirstName());
-			pr.setString(2,p.getLastName());
-			pr.setDate(3,(java.sql.Date) p.getDob());
-			pr.setObject(4,(Gender) p.getGender());
+			pr.setString(1, p.getCin());
+			pr.setString(2, p.getFirstName());
+			pr.setString(3,p.getLastName());
+			pr.setDate(4,(java.sql.Date) p.getDob());
+			pr.setString(5, p.getGender());
 			pr.executeUpdate();
 			return 1;
 		}

@@ -6,5 +6,6 @@ $(
    			$("#name").hide();
    			$("#succes").hide();
    			$("#last").hide();
+   			$("#cin").hide();
    		}
 );

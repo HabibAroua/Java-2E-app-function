@@ -76,10 +76,23 @@ public class PassengerDAOImp implements PassengerDAO
 	}
 
 	@Override
-	public int removePassenger(int id)
+	public int removePassenger(String cin)
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		try
+		{
+			String req="DELETE FROM passenger WHERE cin=?";
+			PreparedStatement pr=connection.getConnection().prepareStatement(req);
+			pr.setString(1, cin);
+			pr.executeUpdate();
+			return 1;
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Error message"+ex.getMessage());
+			return 0;
+		}
+		
 	}
 
 	@Override

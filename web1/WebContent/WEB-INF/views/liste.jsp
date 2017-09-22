@@ -24,6 +24,7 @@ String a="Habib";
                    <td>Last Name</td>
                    <td>Date </td>
                    <td>Gender</td>
+                   <td>Delete</td>
                </tr>
                <% for (int i=0;i<list.size();i++)
             	   {
@@ -34,6 +35,7 @@ String a="Habib";
                    <td><%=list.get(i).getLastName() %></td>
                    <td><%=list.get(i).getDob() %></td>
                    <td><%=list.get(i).getGender() %></td>
+                   <td><a href="http://localhost:8080/web1/Liste?id=<%=list.get(i).getCin() %>">Delete</a></td>
                </tr>
                <%} %>
          </table>

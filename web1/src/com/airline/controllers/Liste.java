@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import db.PassengerDAOImp;
+
 /**
  * Servlet implementation class Liste
  */
@@ -34,6 +36,24 @@ public class Liste extends HttpServlet
 		// TODO Auto-generated method stub
 		 RequestDispatcher view=request.getRequestDispatcher("WEB-INF/views/liste.jsp");
 	        view.forward(request, response);
+	        PrintWriter out=response.getWriter();
+			response.setContentType("text/html");
+	        String id=request.getParameter("id");
+	        PassengerDAOImp passengerDAOImp=new PassengerDAOImp();
+	        int res=passengerDAOImp.removePassenger(id);
+	        if(res==1)
+	        {
+	        	System.out.println("The passenger has deleted");
+	        	response.sendRedirect("http://localhost:8080/web1/Liste");
+	        }
+	        else
+	        {
+	        	if(res==0)
+	        	{
+	        		System.out.println("Error");
+		        	out.println("<script>alert('Error');</script>");
+	        	}
+	        }
 	}
 
 	/**

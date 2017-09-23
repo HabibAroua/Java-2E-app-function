@@ -44,7 +44,7 @@ public class Liste extends HttpServlet
 	        if(res==1)
 	        {
 	        	System.out.println("The passenger has deleted");
-	        	response.sendRedirect("http://localhost:8080/web1/Liste");
+	        	response.sendRedirect("http://localhost:8080/web1/");
 	        }
 	        else
 	        {
@@ -62,6 +62,7 @@ public class Liste extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 

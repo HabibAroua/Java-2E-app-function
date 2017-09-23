@@ -14,6 +14,14 @@ String a="Habib";
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Insert title here</title>
     </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+       $(document).ready(function(){
+         $("a").click(function(){
+        $("#div1").load("demo_test.txt");
+         }); 
+        });
+    </script>
     <body>
          <h1>Liste of passangers</h1>
          <br>
@@ -35,7 +43,7 @@ String a="Habib";
                    <td><%=list.get(i).getLastName() %></td>
                    <td><%=list.get(i).getDob() %></td>
                    <td><%=list.get(i).getGender() %></td>
-                   <td><a href="http://localhost:8080/web1/Liste?id=<%=list.get(i).getCin() %>">Delete</a></td>
+                   <td><a id="div1" href="http://localhost:8080/web1/Liste?id=<%=list.get(i).getCin() %>" name="<%=list.get(i).getCin() %>" onclick="location.reload(); alert('Passanger has been deleted');">Delete</a></td>
                </tr>
                <%} %>
          </table>

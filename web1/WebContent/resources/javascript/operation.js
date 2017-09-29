@@ -57,3 +57,7 @@ $(document).ready
         	);
         }
  );
+function URL_Del(obj)
+{
+    window.location.href = obj;
+}

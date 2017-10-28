@@ -40,7 +40,7 @@ String a="Habib";
                    <td><%=list.get(i).getDob() %></td>
                    <td><%=list.get(i).getGender() %></td>
                    <td><a id="div1"><input type="submit" name="btSup" value="Delete" onclick="URL_Del('http://localhost:8080/web1/Liste?id=<%=list.get(i).getCin() %>');" /></a></td>
-                   <td><a id="div1"><input type="submit" name="btUpdate" value="Update" /></a></td>
+                   <td><a id="div1"><input type="submit" name="btUpdate" value="Update"  onclick="URL_Del('http://localhost:8080/web1/Update?cin=<%=list.get(i).getCin() %>');"/></a></td>
                </tr>
                <%} %>
          </table>

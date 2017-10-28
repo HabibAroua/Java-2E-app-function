@@ -1,23 +1,16 @@
 package db;
 
 import java.util.List;
-
-import com.airline.models.Gender;
 import com.airline.models.Passenger;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class PassengerDAOImp implements PassengerDAO
 {
 	private ConnectDb connection = new ConnectDb();
-	private Connection conn;
-	private Statement stmt;
-	
+
 	public PassengerDAOImp()
 	{
 		//empty
@@ -106,7 +99,30 @@ public class PassengerDAOImp implements PassengerDAO
 	public Passenger findPassengerById(int numero)
 	{
 		// TODO Auto-generated method stub
-		return null;
+		try 
+		{
+			Passenger passenger=new Passenger();
+			String req = "SELECT * FROM Passenger where cin="+numero;
+			PreparedStatement p=connection.getConnection().prepareStatement(req);
+			ResultSet res =p.executeQuery();
+			while (res.next())
+			{
+				String cin = res.getString("cin");
+				String firstName = res.getString("firstName");
+				String lastName=res.getString("lastName");
+				Date datedob=res.getDate("dob");
+				String gender=res.getString("gender");
+				passenger=new Passenger(cin,firstName,lastName,datedob,gender);
+
+			}
+			return passenger;
+		}
+		catch (Exception ex)
+		{
+			System.out.println(ex.getMessage());
+			return null;
+		}
+
 	}
 
 	@Override
@@ -115,10 +131,6 @@ public class PassengerDAOImp implements PassengerDAO
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	public String toAffiche()
-	{
-		return "Hello world";
-	}
+
 
 }

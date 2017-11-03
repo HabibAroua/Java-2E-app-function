@@ -113,7 +113,6 @@ public class PassengerDAOImp implements PassengerDAO
 				Date datedob=res.getDate("dob");
 				String gender=res.getString("gender");
 				passenger=new Passenger(cin,firstName,lastName,datedob,gender);
-
 			}
 			return passenger;
 		}
@@ -131,6 +130,4 @@ public class PassengerDAOImp implements PassengerDAO
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 }

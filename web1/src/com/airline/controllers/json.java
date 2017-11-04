@@ -43,7 +43,8 @@ public class json extends HttpServlet
 		PrintWriter out=response.getWriter();
 		response.setContentType("text/html");
 		out.println("<html><body>");
-		String result="";
+		out.println("<head><title>json</title><link rel='stylesheet' href='resources/json/passenger.json'></head>");
+		String result="[";
 		for(int i=0; i<list.size();i++)
 		{
 			JsonObject json = Json.createObjectBuilder()
@@ -53,10 +54,18 @@ public class json extends HttpServlet
 			     .add("dob",""+list.get(i).getDob())
 			     .add("gender",list.get(i).getGender() )
 			     .build();
-			   result = result+"\n"+json.toString();
+			if(i!=list.size()-1)
+			{
+			   result = result+json.toString()+",";
+			}
+			else
+			{
+				result = result+json.toString();
+			}
 		}
+	    result=result+"]";
 		System.out.println("[ \n"+result+"\n ]");
-		out.println("[ <br>"+result+"<br> ]");
+		out.println(""+result+"");
 		out.println("</body></html>");
 	}
 	/**

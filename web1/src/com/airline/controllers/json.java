@@ -67,6 +67,10 @@ public class json extends HttpServlet
 		System.out.println("[ \n"+result+"\n ]");
 		out.println(""+result+"");
 		out.println("</body></html>");
+		CreateFileJSON g =new CreateFileJSON();
+		g.openFile();
+		g.addRecords(result);
+		g.closeFile();
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

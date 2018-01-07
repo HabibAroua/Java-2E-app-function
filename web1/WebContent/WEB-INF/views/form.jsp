@@ -46,7 +46,7 @@
                          <legend>Passenger detail</legend>
                          <form  method="post">
                              <div class="inputField">
-                                  <label for="first_name" class="inputLabel">Cin :</label>
+                                  <label for="my_cin" class="inputLabel">Cin :</label>
                                   <input type="text" name="cin" id="my_cin"></input>
                              </div>
                              <div class="inputField">
@@ -59,7 +59,7 @@
                              </div>
                              <div class="inputField">
                                   <label for="date_birth" class="inputLabel">Birth date :</label>
-                                  <input type="text" name="date_birth" id="my_date"></input>
+                                  <input type="text" name="date_birth" id="date_birth"></input>
                              </div>
                              <div class="inputField">
                                   <label for="gender" class="inputLabel">Gender :</label>

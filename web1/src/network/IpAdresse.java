@@ -11,15 +11,15 @@ public class IpAdresse
 	{
 		try 
 		{
-            InetAddress ipAddr = InetAddress.getLocalHost();
-            System.out.println(ipAddr.getHostAddress());
-            ipAdresse=ipAddr.getHostAddress();
-        } 
+			InetAddress ipAddr = InetAddress.getLocalHost();
+            		System.out.println(ipAddr.getHostAddress());
+            		ipAdresse=ipAddr.getHostAddress();
+		}
 		catch (UnknownHostException ex) 
 		{
-            ex.printStackTrace();
-            ipAdresse="localhost";
-        }	
+            		ex.printStackTrace();
+            		ipAdresse="localhost";
+		}	
 	}
 	
 	public String getIpAdresse()
